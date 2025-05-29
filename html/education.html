@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mainframe Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/education.css">
+</head>
+
+<body>
+    
+    <div class="screen">
+
+        <nav class="navbar">
+
+            <ul>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#utilities">Utilities</a></li>
+                <li><a href="#compilers">Compilers</a></li>
+                <li><a href="/html/settings.html">Options</a></li>
+                <li><a href="#status">Status</a></li>
+                <li><a href="#help">Help</a></li>
+            </ul>
+
+        </nav>
+
+        <header>
+
+            <p>Education & Experience</p>
+            <div class="error-message" id="errorMessage"></div>
+
+        </header>
+
+        <div class="main-container">
+          <div class="edu-exp-wrapper">
+
+            <!-- Education Section -->
+            <div class="education-section">
+              <div class="entry">
+                <div class="period">2021 – Present</div>
+                <div class="details">
+                  HOGENT Schoonmeersen<br>
+                  Applied Computer Science [Bachelor]<br>
+                  Specialization in Mainframe Technologies
+                </div>
+              </div>
+              <div class="entry">
+                <div class="period">2015 – 2021</div>
+                <div class="details">
+                  Sint-Catharina College Overboelare<br>
+                  Modern Languages & Science [ASO]
+                </div>
+              </div>
+            </div>
+
+            <!-- Experience Section -->
+            <div class="experience-section">
+              <div class="entry">
+                <div class="period">2025 – 2025</div>
+                <div class="details">
+                  IP-filter setup on mainframe<br>
+                  [Bachelor Thesis]
+                </div>
+              </div>
+              <div class="entry">
+                <div class="period">2024 – 2025</div>
+                <div class="details">
+                  Upgrade Db2 version 12 to 13<br>
+                  [Internship]
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        
+        <div class="bottom-prompt">
+
+            <p class="prompt">Command ===></p>
+
+            <div class="input-line">
+
+                <input type="text" id="selectionInput" maxlength="10" autofocus size="10">
+            </div>
+
+        </div>        
+        
+    </div>
+
+    <script>
+        
+        const selectionInput = document.getElementById('selectionInput');
+        const errorMessage = document.getElementById('errorMessage'); // Get the error message element
+
+        selectionInput.addEventListener('focus', () => {
+            selectionInput.classList.add('block-cursor'); // Add block cursor style on focus
+        });
+
+        selectionInput.addEventListener('blur', () => {
+            selectionInput.classList.remove('block-cursor'); // Remove block cursor style on blur
+        });
+
+        // Focus on the input when Tab is pressed
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Tab') {
+                event.preventDefault(); // Prevent default tab behavior
+                selectionInput.focus(); // Move focus to the input prompt
+            }
+        });
+
+        document.getElementById('selectionInput').addEventListener('input', function() {
+            // Resize the input width dynamically based on its content
+            this.style.width = (this.value.length + 1) + "ch";
+        });
+
+        // Remove the restriction for numbers only
+        // Handle user input and redirect
+        document.getElementById('selectionInput').addEventListener('keyup', function(event) {
+            if (event.key === 'Enter') {
+                const selection = event.target.value.toUpperCase(); // Convert input to uppercase for case-insensitive matching
+
+                // Clear previous error message, if any
+                errorMessage.style.display = 'none';
+
+                // Handle both numeric and 'HOME' or 'RETURN' input
+                if (selection === '0') {
+                    window.location.href = 'settings.html';
+                } else if (selection === '1') {
+                    window.location.href = 'about_me.html';
+                } else if (selection === '2') {
+                    window.location.href = 'skills.html';
+                } else if (selection === '3') {
+                    window.location.href = 'projects.html';
+                } else if (selection === '4') {
+                    window.location.href = 'hobbies.html';
+                } else if (selection === '5') {
+                    window.location.href = 'contact.html';
+                } else if (selection === 'EXIT' || selection === 'X') {
+                    window.location.href = 'exit.html';
+                } else if (selection === 'HOME' || selection === 'H') {
+                    window.location.href = 'ispf.html';
+                } else if (selection === 'RETURN' || selection === 'R') {
+                    window.history.back(); // Navigate to the previous page
+                } else if (selection === 'NEXT' || selection === 'N') {
+                    window.location.href = 'education.html';
+                } else {
+                    // Display error message
+                    errorMessage.textContent = 'Invalid option';
+                    errorMessage.style.display = 'block'; // Show the error message
+                }
+
+                event.target.value = ''; // Clears the input field
+            }
+        });
+
+        // Display current time in the System Info Box
+        function updateTime() {
+            const now = new Date();
+            const formattedTime = now.toLocaleTimeString('en-US', { hour12: false });
+            document.getElementById('currentTime').textContent = formattedTime;
+        }
+
+        // Update time every second
+        setInterval(updateTime, 1000);
+        updateTime(); // Initialize immediately
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,319 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  background-color: black;
+  color: #33ff33;
+  font-family: "Fira Code", monospace;
+  font-size: 1.1em;
+  font-weight: 400;
+  display: flex;
+  justify-content: center; 
+  align-items: center;    
+  margin: 0;              
+}
+
+.screen {
+  width: 100vw;
+  height: 100vh;
+  padding: 40px;
+  box-sizing: border-box;
+  border: 2px solid #33ff33;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow-y: auto;
+  position: relative;
+}
+
+header {
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 1.5em;
+  color: whitesmoke;
+  text-transform: uppercase;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  position: relative;
+}
+
+header h1::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 2px; 
+  background: repeating-linear-gradient(
+    90deg, 
+    #3890d8, 
+    #3890d8 10px, 
+    transparent 10px, 
+    transparent 20px 
+  );
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+header p {
+  font-size: 1.1em;
+  margin: 35px 10px;
+  font-style: normal;
+  font-weight: normal;
+  color: #3890d8;
+}
+
+.navbar {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center; 
+  padding-top: 5px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  background-color: black;
+  border-bottom: 2px solid #3890d8; 
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 20px; 
+}
+
+.navbar li {
+  font-size: 1em;
+  font-weight: normal;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #ffffff; 
+  font-family: inherit; 
+  cursor: pointer;
+  position: relative; 
+}
+
+.navbar a:hover::after {
+  content: ""; 
+  position: absolute;
+  left: 0;
+  top: 100%;
+  width: 1ch; 
+  height: 2px;
+  background-color: #ffffff;
+}
+
+.main-container {
+  overflow-y: auto;
+  max-height: calc(100vh - 180px); 
+  margin: 20px 40px;
+}
+
+.menu {
+  flex: 1;
+  max-width: 100%;
+  padding-left: 60px; 
+  padding-right: 60px;
+}
+
+.menu ul {
+  list-style-type: none;
+}
+
+.menu li {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.center-message {
+  text-align: center;
+  font-size: 1.3em;
+  color: #04E6E6; 
+  margin-top: 100px;
+}
+
+.option-number {
+  color: whitesmoke; 
+  font-weight: normal;
+  margin-right: 15px; 
+  width: 20px; 
+}
+
+.option-name {
+  color: #04E6E6; 
+  margin-right: 25px; 
+  margin-left: 25px;
+  width: 120px; 
+  display: inline-block; 
+  text-align: left;
+}
+
+.option-name a {
+  text-decoration: none; 
+  color: inherit; 
+  cursor: default; 
+}
+
+.option-name a:hover {
+  text-decoration: none; 
+  color: inherit; 
+  cursor: default; 
+}
+
+.option-description {
+  color: #33ff33; 
+  font-style: italic;
+  text-align: left;
+  margin-left: 25px;
+}
+
+.section {
+  display: block;
+}
+
+.content {
+  padding: 0 3%; 
+  margin-top: 45px;  
+}
+
+.content p {
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.system-info {
+  width: 25%; 
+  color: #33ff33; 
+  line-height: 1.2; 
+  margin-left: 20px; 
+}
+
+.system-info ul {
+  list-style: none; 
+  padding: 0; 
+  margin: 0; 
+}
+
+.system-info li {
+  display: flex; 
+  align-items: baseline; 
+  margin: 10px 0;
+}
+
+.info-key {
+  width: 40%; 
+  text-align: left; 
+  padding-right: 10px; 
+}
+
+.info-separator {
+  width: 5%; 
+  text-align: center; 
+  padding-right: 35px; 
+}
+
+.info-value {
+  flex: 1; 
+  text-align: left;
+  color: #04E6E6; 
+}
+
+.bottom-prompt {
+  position: absolute;
+  bottom: 85px;
+  left: 5%;
+  display: flex;
+  align-items: center;
+}
+
+.prompt {
+  font-weight: normal;
+  margin-right: 15px;
+}
+
+.input-line {
+  position: relative;
+  width: 1200px;
+  height: 1.2em;
+  border-bottom: 1.5px solid #33ff33;
+  display: flex;
+  align-items: center;
+}
+
+input[type="text"] {
+  background-color: black;
+  color: #33ff33;
+  border: none;
+  font-family: inherit;
+  font-size: 1em;
+  outline: none;
+  width: 1px; 
+  text-align: left;
+  animation: blink 1s steps(1, start) infinite;
+  position: absolute;
+}
+
+input[type="text"]:focus {
+  width: 15px; 
+}
+
+.error-message {
+  position: absolute;
+  top: 25px;
+  right: 35px;
+  color: yellow;
+  font-family: "Fira Code", monospace;
+  background-color: black; 
+  padding-top: 20px;
+  padding-right: 20px;
+  font-size: 1rem;
+  display: none; 
+  z-index: 1000; 
+}
+
+@keyframes blink {
+  0% {
+    background-color: #33ff33; 
+    color: black;
+  }
+  50% {
+    background-color: black;
+    color: #33ff33;
+  }
+  100% {
+    background-color: #33ff33;
+    color: black;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .screen {
+      padding: 20px;
+  }
+  header h1 {
+      font-size: 1.2em;
+  }
+  body {
+      font-size: 1em;
+  }
+}
+
+@media (max-width: 480px) {
+  .screen {
+      padding: 10px;
+  }
+  header h1 {
+      font-size: 1em;
+  }
+  body {
+      font-size: 0.9em;
+  }
+}

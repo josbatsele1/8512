@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mainframe Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+    
+    <div class="screen">
+
+        <nav class="navbar">
+
+            <ul>
+                <li><a href="/html/ispf.html">Menu</a></li>
+                <li><a href="#utilities">Utilities</a></li>
+                <li><a href="#compilers">Compilers</a></li>
+                <li><a href="/html/settings.html">Options</a></li>
+                <li><a href="#status">Status</a></li>
+                <li><a href="#help">Help</a></li>
+            </ul>
+
+        </nav>
+
+        <header>
+
+            <p>ISPF Primary Option Menu</p>
+            <div class="error-message" id="errorMessage"></div>
+
+        </header>
+
+        <div class="main-container">
+            <!-- Menu Box -->
+            <div class="menu">
+                <ul>
+                    <li>
+                        <span class="option-number">0</span>
+                        <span class="option-name"><a href="settings.html">Settings</a></span>
+                        <span class="option-description">Configure preferences for language, mode, sounds, etc ...</span>
+                    </li>
+                    <li>
+                        <span class="option-number">1</span>
+                        <span class="option-name"><a href="about_me.html">About Me</a></span>
+                        <span class="option-description">Get to know more about my background and skills</span>
+                    </li>
+                    <li>
+                        <span class="option-number">2</span>
+                        <span class="option-name"><a href="skills.html">Skills</a></span>
+                        <span class="option-description">Results of some personality and business tests</span>
+                    </li>
+                    <li>
+                        <span class="option-number">3</span>
+                        <span class="option-name"><a href="projects.html">Projects</a></span>
+                        <span class="option-description">See some of the projects I've worked on</span>
+                    </li>
+                    <li>
+                        <span class="option-number">4</span>
+                        <span class="option-name"><a href="hobbies.html">Hobbies</a></span>
+                        <span class="option-description">Learn about my interests outside of work</span>
+                    </li>
+                    <li>
+                        <span class="option-number">5</span>
+                        <span class="option-name"><a href="contact.html">Contact</a></span>
+                        <span class="option-description">Get in touch with me via LinkedIn, email or social media</span>
+                    </li>
+                    <li>
+                        <span class="option-number">6</span>
+                        <span class="option-name"><a href="links.html">Links</a></span>
+                        <span class="option-description">Interesting links you might want to check out</span>
+                    </li>
+                    <li>
+                        <span class="option-number">X</span>
+                        <span class="option-name"><a href="exit.html">Exit</a></span>
+                        <span class="option-description">Logoff 8512 mainframe session</span>
+                    </li>
+                </ul>
+            </div>
+        
+            <!-- System Info Box -->
+
+            <div class="system-info">
+
+                <ul>
+                    <li><span class="info-key">User ID</span><span class="info-separator">:</span><span class="info-value">SYSAD001</span></li>
+                    <li><span class="info-key">Time</span><span class="info-separator">:</span><span class="info-value" id="currentTime"></span></li>
+                    <li><span class="info-key">Terminal</span><span class="info-separator">:</span><span class="info-value">8512</span></li>
+                    <li><span class="info-key">Screen</span><span class="info-separator">:</span><span class="info-value">01</span></li>
+                    <li><span class="info-key">Language</span><span class="info-separator">:</span><span class="info-value">EN</span></li>
+                    <li><span class="info-key">TSO Prefix</span><span class="info-separator">:</span><span class="info-value">IBMUSER</span></li>
+                    <li><span class="info-key">System ID</span><span class="info-separator">:</span><span class="info-value">SYS1</span></li>
+                    <li><span class="info-key">Version</span><span class="info-separator">:</span><span class="info-value">ISPF 2.4</span></li>
+                </ul>
+
+            </div>
+
+        </div>        
+
+        <section class="content">
+
+            <p>Welcome to my retro-styled portfolio! Inspired by classic IBM mainframes, it's a gateway to explore my work and passions. 
+                For those new to mainframe environments, you'll also get a glimpse into their basics as you navigate. <br><br>
+                Type a number on the commandline and press enter or simply select one of the options you are interested in.
+            </p>
+
+        </section>
+
+        <div class="bottom-prompt">
+
+            <p class="prompt">Command ===></p>
+
+            <div class="input-line">
+
+                <input type="text" id="selectionInput" maxlength="10" autofocus size="10">
+            </div>
+
+        </div>        
+        
+    </div>
+
+    <script>
+        
+        const selectionInput = document.getElementById('selectionInput');
+        const errorMessage = document.getElementById('errorMessage'); // Get the error message element
+
+        selectionInput.addEventListener('focus', () => {
+            selectionInput.classList.add('block-cursor'); // Add block cursor style on focus
+        });
+
+        selectionInput.addEventListener('blur', () => {
+            selectionInput.classList.remove('block-cursor'); // Remove block cursor style on blur
+        });
+
+        // Focus on the input when Tab is pressed
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Tab') {
+                event.preventDefault(); // Prevent default tab behavior
+                selectionInput.focus(); // Move focus to the input prompt
+            }
+        });
+
+        document.getElementById('selectionInput').addEventListener('input', function() {
+            // Resize the input width dynamically based on its content
+            this.style.width = (this.value.length + 1) + "ch";
+        });
+
+        // Remove the restriction for numbers only
+        // Handle user input and redirect
+        document.getElementById('selectionInput').addEventListener('keyup', function(event) {
+            if (event.key === 'Enter') {
+                const selection = event.target.value.toUpperCase(); // Convert input to uppercase for case-insensitive matching
+
+                // Clear previous error message, if any
+                errorMessage.style.display = 'none';
+
+                // Handle both numeric and 'HOME' or 'RETURN' input
+                if (selection === '0') {
+                    window.location.href = 'settings.html';
+                } else if (selection === '1') {
+                    window.location.href = 'about_me.html';
+                } else if (selection === '2') {
+                    window.location.href = 'skills.html';
+                } else if (selection === '3') {
+                    window.location.href = 'projects.html';
+                } else if (selection === '4') {
+                    window.location.href = 'hobbies.html';
+                } else if (selection === '5') {
+                    window.location.href = 'contact.html';
+                } else if (selection === 'EXIT' || selection === 'X') {
+                    window.location.href = 'exit.html';
+                } else if (selection === 'HOME' || selection === 'H') {
+                    window.location.href = 'ispf.html';
+                } else if (selection === 'RETURN' || selection === 'R') {
+                    window.history.back(); // Navigate to the previous page
+                } else {
+                    // Display error message
+                    errorMessage.textContent = 'Invalid option';
+                    errorMessage.style.display = 'block'; // Show the error message
+                }
+
+                event.target.value = ''; // Clears the input field
+            }
+        });
+
+        // Display current time in the System Info Box
+        function updateTime() {
+            const now = new Date();
+            const formattedTime = now.toLocaleTimeString('en-US', { hour12: false });
+            document.getElementById('currentTime').textContent = formattedTime;
+        }
+
+        // Update time every second
+        setInterval(updateTime, 1000);
+        updateTime(); // Initialize immediately
+
+    </script>
+
+</body>
+
+</html>

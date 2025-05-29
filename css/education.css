@@ -1,0 +1,350 @@
+/* styles.css */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  background-color: black;
+  color: #33ff33;
+  font-family: "Fira Code", monospace;
+  font-size: 1.1em;
+  font-weight: 400;
+  display: flex;
+  justify-content: center; 
+  align-items: center;    
+  margin: 0;              
+}
+
+.screen {
+  width: 100vw;
+  height: 100vh;
+  padding: 40px;
+  box-sizing: border-box;
+  border: 2px solid #33ff33;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow-y: auto;
+  position: relative;
+}
+
+header {
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 1.5em;
+  color: whitesmoke;
+  text-transform: uppercase;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  position: relative;
+}
+
+header h1::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 2px; /* Adjust thickness */
+  background: repeating-linear-gradient(
+    90deg, /* Horizontal stripes */
+    #3890d8, /* Stripe color */
+    #3890d8 10px, /* Stripe width */
+    transparent 10px, /* Gap between stripes */
+    transparent 20px /* Space for repeating pattern */
+  );
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+header p {
+  font-size: 1.1em;
+  margin: 35px 10px;
+  font-style: normal;
+  font-weight: normal;
+  color: #3890d8;
+}
+
+
+/* Navbar Styling */
+.navbar {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center; /* Vertically align items */
+  padding-top: 5px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  background-color: black;
+  border-bottom: 2px solid #3890d8; /* Blue separator line */
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 20px; /* Space between menu items */
+}
+
+.navbar li {
+  font-size: 1em;
+  font-weight: normal;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #ffffff; /* White text */
+  font-family: inherit; /* Match the terminal font */
+  cursor: pointer;
+  position: relative; /* For the underline effect */
+}
+
+.navbar a:hover::after {
+  content: ""; /* Hover underline */
+  position: absolute;
+  left: 0;
+  top: 100%;
+  width: 1ch; /* Underline the first letter */
+  height: 2px;
+  background-color: #ffffff;
+}
+
+/* Flex Container for Menu and System Info */
+.main-container {
+  overflow-y: auto;
+  max-height: calc(100vh - 180px); /* Room for header and command line */
+  margin: 20px 40px;
+}
+
+/* Menu Styling */
+.menu {
+  flex: 1;
+  max-width: 100%;
+  padding-left: 60px; 
+  padding-right: 60px;
+}
+
+.menu ul {
+  list-style-type: none;
+}
+
+.menu li {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.edu-exp-wrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+  margin-left: 2rem;
+}
+
+.education-section, .experience-section {
+  flex: 1;
+  min-width: 300px;
+}
+
+.entry {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.period {
+  width: 200px;
+}
+
+.details {
+  line-height: 1.5rem;
+}
+
+.option-number {
+  color: whitesmoke; /* Gray color for numbers */
+  font-weight: normal;
+  margin-right: 15px; /* More space between number and name */
+  width: 20px; /* Consistent width for alignment */
+}
+
+.option-name {
+  color: #04E6E6; /* Blue color for option name */
+  margin-right: 25px; /* Space between name and description */
+  margin-left: 25px;
+  width: 120px; /* Set a fixed width for alignment */
+  display: inline-block; /* Ensures block-like behavior for alignment */
+  text-align: left;
+}
+
+.option-name a {
+  text-decoration: none; /* Remove underline */
+  color: inherit; /* Make the link inherit the color of its parent */
+  cursor: default; /* Prevent pointer cursor */
+}
+
+.option-name a:hover {
+  text-decoration: none; /* Ensure no underline on hover */
+  color: inherit; /* Prevent color change on hover */
+  cursor: default; /* Keep default cursor */
+}
+
+.option-description {
+  color: #33ff33; /* Green color for description */
+  font-style: italic;
+  text-align: left;
+  margin-left: 25px;
+}
+
+.section {
+  display: block;
+}
+
+.content {
+  padding: 0 3%; /* Center content with padding */
+  margin-top: 45px;  /* Removes any extra spacing at the top */
+}
+
+.content p {
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+/* System Info Box */
+.system-info {
+  width: 25%; /* Set consistent width */
+  color: #33ff33; /* Terminal-style green */
+  line-height: 1.2; /* Consistent line spacing */
+  margin-left: 20px; /* Space from the menu */
+}
+
+.system-info ul {
+  list-style: none; /* Remove bullet points */
+  padding: 0; /* Remove default padding */
+  margin: 0; /* Remove margin */
+}
+
+.system-info li {
+  display: flex; /* Use Flexbox for layout */
+  align-items: baseline; /* Align items vertically */
+  margin: 10px 0;
+}
+
+.info-key {
+  width: 40%; /* Fixed width for labels (adjust as needed) */
+  text-align: left; /* Align labels to the left */
+  padding-right: 10px; /* Space before the colon */
+}
+
+.info-separator {
+  width: 5%; /* Fixed width for colons */
+  text-align: center; /* Center-align colons */
+  padding-right: 35px; /* Space before values */
+}
+
+.info-value {
+  flex: 1; /* Take remaining space */
+  text-align: left; /* Align values to the left */
+  color: #04E6E6; /* Blue color for option name */
+}
+
+/* Bottom Prompt */
+.bottom-prompt {
+  position: absolute;
+  bottom: 85px;
+  left: 5%;
+  display: flex;
+  align-items: center;
+}
+
+.prompt {
+  font-weight: normal;
+  margin-right: 15px;
+}
+
+.input-line {
+  position: relative;
+  width: 1200px;
+  height: 1.2em;
+  border-bottom: 1.5px solid #33ff33;
+  display: flex;
+  align-items: center;
+}
+
+input[type="text"] {
+  background-color: black;
+  color: #33ff33;
+  border: none;
+  font-family: inherit;
+  font-size: 1em;
+  outline: none;
+  width: 1px; 
+  text-align: left;
+  animation: blink 1s steps(1, start) infinite;
+  position: absolute;
+}
+
+input[type="text"]:focus {
+  width: 15px; /* Ensure it stays 15px while focused */
+}
+
+/* Error message styles */
+.error-message {
+  position: absolute;
+  top: 25px;
+  right: 35px;
+  color: yellow;
+  font-family: "Fira Code", monospace;
+  background-color: black; /* Matches the background */
+  padding-top: 20px;
+  padding-right: 20px;
+  font-size: 1rem;
+  display: none; /* Hidden by default */
+  z-index: 1000; /* Ensure it appears above other elements */
+}
+
+@keyframes blink {
+  0% {
+    background-color: #33ff33; /* Block cursor color */
+    color: black;
+  }
+  50% {
+    background-color: black;
+    color: #33ff33;
+  }
+  100% {
+    background-color: #33ff33;
+    color: black;
+  }
+}
+
+/* Responsive Styles */
+
+@media (max-width: 768px) {
+  .screen {
+      padding: 20px;
+  }
+  header h1 {
+      font-size: 1.2em;
+  }
+  body {
+      font-size: 1em;
+  }
+}
+
+@media (max-width: 480px) {
+  .screen {
+      padding: 10px;
+  }
+  header h1 {
+      font-size: 1em;
+  }
+  body {
+      font-size: 0.9em;
+  }
+}
