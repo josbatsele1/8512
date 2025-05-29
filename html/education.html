@@ -15,7 +15,7 @@
         <nav class="navbar">
 
             <ul>
-                <li><a href="#menu">Menu</a></li>
+                <li><a href="index.html">Menu</a></li>
                 <li><a href="#utilities">Utilities</a></li>
                 <li><a href="#compilers">Compilers</a></li>
                 <li><a href="/html/settings.html">Options</a></li>
@@ -35,7 +35,6 @@
         <div class="main-container">
           <div class="edu-exp-wrapper">
 
-            <!-- Education Section -->
             <div class="education-section">
               <div class="entry">
                 <div class="period">2021 – Present</div>
@@ -54,7 +53,6 @@
               </div>
             </div>
 
-            <!-- Experience Section -->
             <div class="experience-section">
               <div class="entry">
                 <div class="period">2025 – 2025</div>
@@ -91,79 +89,71 @@
     <script>
         
         const selectionInput = document.getElementById('selectionInput');
-        const errorMessage = document.getElementById('errorMessage'); // Get the error message element
+        const errorMessage = document.getElementById('errorMessage'); 
 
         selectionInput.addEventListener('focus', () => {
-            selectionInput.classList.add('block-cursor'); // Add block cursor style on focus
+            selectionInput.classList.add('block-cursor'); 
         });
 
         selectionInput.addEventListener('blur', () => {
-            selectionInput.classList.remove('block-cursor'); // Remove block cursor style on blur
+            selectionInput.classList.remove('block-cursor');
         });
 
-        // Focus on the input when Tab is pressed
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Tab') {
-                event.preventDefault(); // Prevent default tab behavior
-                selectionInput.focus(); // Move focus to the input prompt
+                event.preventDefault(); 
+                selectionInput.focus(); 
             }
         });
 
         document.getElementById('selectionInput').addEventListener('input', function() {
-            // Resize the input width dynamically based on its content
             this.style.width = (this.value.length + 1) + "ch";
         });
 
-        // Remove the restriction for numbers only
-        // Handle user input and redirect
         document.getElementById('selectionInput').addEventListener('keyup', function(event) {
             if (event.key === 'Enter') {
-                const selection = event.target.value.toUpperCase(); // Convert input to uppercase for case-insensitive matching
+                const selection = event.target.value.toUpperCase();
 
-                // Clear previous error message, if any
                 errorMessage.style.display = 'none';
 
-                // Handle both numeric and 'HOME' or 'RETURN' input
                 if (selection === '0') {
-                    window.location.href = 'settings.html';
+                    window.location.href = '/html/settings.html';
                 } else if (selection === '1') {
-                    window.location.href = 'about_me.html';
+                    window.location.href = '/html/about_me.html';
                 } else if (selection === '2') {
-                    window.location.href = 'skills.html';
+                    window.location.href = '/html/skills.html';
                 } else if (selection === '3') {
-                    window.location.href = 'projects.html';
+                    window.location.href = '/html/projects.html';
                 } else if (selection === '4') {
-                    window.location.href = 'hobbies.html';
+                    window.location.href = '/html/hobbies.html';
                 } else if (selection === '5') {
-                    window.location.href = 'contact.html';
+                    window.location.href = '/html/contact.html';
                 } else if (selection === 'EXIT' || selection === 'X') {
-                    window.location.href = 'exit.html';
+                    window.location.href = '/html/exit.html';
                 } else if (selection === 'HOME' || selection === 'H') {
-                    window.location.href = 'ispf.html';
+                    window.location.href = 'index.html';
                 } else if (selection === 'RETURN' || selection === 'R') {
-                    window.history.back(); // Navigate to the previous page
+                    window.history.back(); 
                 } else if (selection === 'NEXT' || selection === 'N') {
-                    window.location.href = 'education.html';
+                    window.location.href = '/html/education.html';
                 } else {
-                    // Display error message
+                    
                     errorMessage.textContent = 'Invalid option';
-                    errorMessage.style.display = 'block'; // Show the error message
+                    errorMessage.style.display = 'block'; 
                 }
 
-                event.target.value = ''; // Clears the input field
+                event.target.value = ''; 
             }
         });
 
-        // Display current time in the System Info Box
         function updateTime() {
             const now = new Date();
             const formattedTime = now.toLocaleTimeString('en-US', { hour12: false });
             document.getElementById('currentTime').textContent = formattedTime;
         }
 
-        // Update time every second
         setInterval(updateTime, 1000);
-        updateTime(); // Initialize immediately
+        updateTime();
 
     </script>
 
